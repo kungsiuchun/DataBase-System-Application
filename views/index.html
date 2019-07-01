@@ -1,0 +1,48 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}MCU Shop{% endblock title %}
+
+{% block content %}
+<main role="main">
+
+
+
+  <div class="album py-5 bg-light">
+
+    <div class="container">
+      <div class="header_background ">
+        <div class="background_image " style="background-image:url(/images/Marvel-Movie-Banner.jpg) ; height: 100%">
+        </div>
+      </div>
+      <hr/>
+      <br/>
+      <h6 class="recent-name">Customer Infomation: {{ qCount }} customer </h6>
+      <div class="row">
+        {% for customer in customer %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h6 class="card-title icon-face">{{ customer.first_name }}  {{customer.last_name}}</h6>
+              <p class="card-text">
+                <i class="fa fa-envelope "></i>  {{customer.email}}
+              </p>
+              <p class="card-text">
+                <i class="fa fa-address-card"></i> {{customer.phone}}
+              </p>
+              <p class="card-text">
+                <i class="fa fa-address-book"></i> {{customer.address}}
+              </p>
+            </div>
+
+
+          </div>
+        </div>
+        {% else %}
+        <p>No listings found...</p>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</main>
+{% endblock content %}

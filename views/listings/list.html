@@ -1,0 +1,70 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Listings | Dormy{% endblock title %}
+
+{% block content %}
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-row-gap: 40px;
+        grid-column-gap: 30px;
+        /*background-color: #2196F3;*/
+        padding: 30px;
+    }
+
+    .grid-container > div {
+        /*background-color: rgba(255, 255, 255, 0.8);*/
+        text-align: center;
+        padding: 20px 0;
+        font-size: 30px;
+    }
+
+</style>
+
+<!-- SEARCH FILTER -->
+
+<div style="display: inline-block" class="offset-1 text-md-right">
+    <div class="text-black ">
+        <h6 class="title">Search Result: {{ qCount }}</h6>
+    </div>
+</div>
+<!-- END FILTER -->
+
+<hr/>
+
+<!-- LISTING LOOP -->
+<div class="album py-5 bg-light">
+    <div class="container">
+        <!--<h4>Product <i>Type:</i> {{ type if type else "None" }} | <i>Keywords:</i> {{ query if query else "None" }}</h4>-->
+        <!--<br />-->
+        <div class="row">
+            {% for product in product %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name.charAt(0).toUpperCase() + product.name.slice(1) }}</h5>
+                        <p class="card-text">
+                            <i class="fa fa-tag"></i>{{product.catagory}}
+                        </p>
+                        <p class="card-text">
+                            <i class="fa fa-dollar-sign"></i> {{product.price}}$
+                        </p>
+                        <p class="card-text">
+                            <i class="fa"></i>Discription: {{product.discription}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- END LISTING -->
+
+
+<!-- PAGING -->
+<!-- End PAGEING -->
+
+{% endblock content %}
+
